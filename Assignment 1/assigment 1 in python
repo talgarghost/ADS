@@ -1,0 +1,99 @@
+def print_digits(n):
+    if n == 0:
+        return
+    print_digits(n // 10)
+    print(n % 10)
+
+def sum_array(arr, i):
+    if i == len(arr):
+        return 0
+    return arr[i] + sum_array(arr, i + 1)
+
+def is_prime(n, i=2):
+    if n <= 2:
+        return n == 2
+    if n % i == 0:
+        return False
+    if i * i > n:
+        return True
+    return is_prime(n, i + 1)
+
+def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n - 1)
+
+def fib(n):
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+    return fib(n - 1) + fib(n - 2)
+
+def power(a, n):
+    if n == 0:
+        return 1
+    return a * power(a, n - 1)
+
+def reverse(n, arr):
+    if n == 0:
+        return
+    x = arr.pop(0)
+    reverse(n - 1, arr)
+    print(x, end=" ")
+
+def is_digits(s, i=0):
+    if i == len(s):
+        return True
+    if not s[i].isdigit():
+        return False
+    return is_digits(s, i + 1)
+
+def length(s):
+    if s == "":
+        return 0
+    return 1 + length(s[1:])
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+num = int(input())
+print_digits(num)
+
+n = int(input())
+arr = [0] * n
+for i in range(n):
+    arr[i] = int(input())
+print(sum_array(arr, 0) / n)
+
+p = int(input())
+print("Prime" if is_prime(p) else "Composite")
+
+f = int(input())
+print(factorial(f))
+
+fib_n = int(input())
+print(fib(fib_n))
+
+a = int(input())
+pow_n = int(input())
+print(power(a, pow_n))
+
+k = int(input())
+arr_rev = [0] * k
+for i in range(k):
+    arr_rev[i] = int(input())
+reverse(k, arr_rev)
+print()
+
+s = input()
+print("Yes" if is_digits(s) else "No")
+
+s2 = input()
+print(length(s2))
+
+x = int(input())
+y = int(input())
+print(gcd(x, y))
